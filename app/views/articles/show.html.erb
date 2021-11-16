@@ -1,0 +1,15 @@
+<h1 class="text-xl font-semibold"><%= @article.title %></h1>
+<div class="mb-8 flex gap-2">
+  <%= link_to edit_article_path(@article) do %>
+    <i class="far fa-edit text-indigo-600"></i>
+  <% end -%>
+  <%= link_to article_path(@article), method: :delete, data: {confirm: 'Delete?'} do %>
+    <i class="fas fa-trash-alt text-indigo-600"></i>
+  <% end -%>
+  <%= link_to publish_article_path(@article), data: {confirm: (@article.published ? 'Unpublish?' : 'Publish?') } do %>
+    <i class="fas fa-check text-<%= @article.published ? 'indigo' : 'red' %>-600"></i>
+  <% end -%>
+</div>
+
+<%= image_tag(@article.image_url, alt: @article.title, class: "object-cover w-full h-48") if @article.image_url.present? %>
+<p class="whitespace-pre-line"><%= @article.content %></p>

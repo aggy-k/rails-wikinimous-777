@@ -1,0 +1,18 @@
+ <h1 class="text-center text-2xl font-semibold">Welcome to Wikinimous 777</h1>
+  <div class="mt-4">
+    <% @articles.each do |a| %>
+      <%= link_to article_path(a) do  %>
+        <div class="mt-4">
+          <h2 class="text-xl text-blue-800"><%= a.title %></h2>
+          <p class="text-base text-gray-600">
+            <%= a.content %>
+          </p>
+          <div class="text-xs flex justify-between">
+            <p class="italic">Status: <%= a.published ? 'Published' : 'Not yet published' %></p>
+            <%= link_to 'Publish!', '#'  %>
+          </div>
+        </div>
+      <% end -%>
+    <% end -%>
+  </div>
+
